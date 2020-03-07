@@ -15,5 +15,6 @@
  */
 /**
  * The MyBatis data mapper framework makes it easier to use a relational database with object-oriented applications.
+ * 数据库与对象关系映射
  */
 package org.apache.ibatis;

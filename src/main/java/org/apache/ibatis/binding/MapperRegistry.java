@@ -64,6 +64,7 @@ public class MapperRegistry {
       }
       boolean loadCompleted = false;
       try {
+        //会将mapper接口的Class作为key放到一个knownMappers中，然后并生成这个接口的代理工厂对象
         knownMappers.put(type, new MapperProxyFactory<>(type));
         // It's important that the type is added before the parser is run
         // otherwise the binding may automatically be attempted by the

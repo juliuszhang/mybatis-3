@@ -46,10 +46,29 @@ import org.xml.sax.SAXParseException;
  */
 public class XPathParser {
 
+  /**
+   * xml document 对象
+   */
   private final Document document;
+
+  /**
+   * 校验标志位
+   */
   private boolean validation;
+
+  /**
+   * 解析器
+   */
   private EntityResolver entityResolver;
+
+  /**
+   * 变量
+   */
   private Properties variables;
+
+  /**
+   * XPath
+   */
   private XPath xpath;
 
   public XPathParser(String xml) {
@@ -211,11 +230,18 @@ public class XPathParser {
     return evalNode(document, expression);
   }
 
+  /**
+   *
+   * @param root
+   * @param expression 根据xPath表达式提取节点
+   * @return
+   */
   public XNode evalNode(Object root, String expression) {
     Node node = (Node) evaluate(expression, root, XPathConstants.NODE);
     if (node == null) {
       return null;
     }
+    //构造成XNode节点 存放替换变量后的节点对象
     return new XNode(this, node, variables);
   }
 

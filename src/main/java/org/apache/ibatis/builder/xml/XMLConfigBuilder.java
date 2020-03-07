@@ -272,13 +272,16 @@ public class XMLConfigBuilder extends BaseBuilder {
 
   private void environmentsElement(XNode context) throws Exception {
     if (context != null) {
+      //在调用SqlSessionFactoryBuilder.build的时候如果没有明确指定环境 就使用配置中default属性指定的环境
       if (environment == null) {
         environment = context.getStringAttribute("default");
       }
       for (XNode child : context.getChildren()) {
         String id = child.getStringAttribute("id");
         if (isSpecifiedEnvironment(id)) {
+          //事务
           TransactionFactory txFactory = transactionManagerElement(child.evalNode("transactionManager"));
+          //数据源工厂 默认用的UnpooledDataSourceFactory
           DataSourceFactory dsFactory = dataSourceElement(child.evalNode("dataSource"));
           DataSource dataSource = dsFactory.getDataSource();
           Environment.Builder environmentBuilder = new Environment.Builder(id)

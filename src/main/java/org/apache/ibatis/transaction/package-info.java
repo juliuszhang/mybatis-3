@@ -15,5 +15,6 @@
  */
 /**
  * Base package for transactions.
+ * 事务
  */
 package org.apache.ibatis.transaction;

@@ -135,6 +135,7 @@ public class MapperAnnotationBuilder {
         try {
           // issue #237
           if (!method.isBridge()) {
+            //对每一个接口方法进行解析，并初始化mapStatement
             parseStatement(method);
           }
         } catch (IncompleteElementException e) {
