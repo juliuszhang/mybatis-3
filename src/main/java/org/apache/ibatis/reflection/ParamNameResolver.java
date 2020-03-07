@@ -107,6 +107,11 @@ public class ParamNameResolver {
    * ...).
    * </p>
    */
+  /**
+   * 返回传入的参数与参数名称的映射 如果只有一个参数，那么就不需要做映射
+   * @param args
+   * @return
+   */
   public Object getNamedParams(Object[] args) {
     final int paramCount = names.size();
     if (args == null || paramCount == 0) {

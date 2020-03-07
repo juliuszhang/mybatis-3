@@ -53,6 +53,9 @@ public class SimpleExecutor extends BaseExecutor {
     }
   }
 
+  /**
+   * 这里已经开始操作JDBC的Statement了
+   */
   @Override
   public <E> List<E> doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) throws SQLException {
     Statement stmt = null;

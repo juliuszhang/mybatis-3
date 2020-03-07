@@ -92,6 +92,7 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
   private MapperMethodInvoker cachedInvoker(Method method) throws Throwable {
     try {
       return methodCache.computeIfAbsent(method, m -> {
+        //看调用的接口方法是不是default方法
         if (m.isDefault()) {
           try {
             if (privateLookupInMethod == null) {
